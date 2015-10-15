@@ -11,8 +11,12 @@
 |
 */
 
-Route::get('/', ['as' => 'LoginGet', 'uses' => 'UserController@getlogin']);
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('login',['as' => 'LoginAction','uses' => 'UserController@login']);
+Route::get('/articles','ArticleController@index');
 
-Route::get('register',['as' => 'RigisterAction','uses' => 'UserController@register']);
+Route::get('/articles/create','ArticleController@create');
+
+Route::get('/articles/{id}','ArticleController@show');
