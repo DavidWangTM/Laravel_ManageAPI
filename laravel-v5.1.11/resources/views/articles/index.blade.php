@@ -18,7 +18,7 @@
                 </div>
                 <div class="post-content pad">
                     <div class="entry custome">
-                        {{ $article->content }}
+                        {{ $article-> intro }}
                     </div>
                     <a class="more-link-custom" href="/articles/{{ $article->id }}"><span><i>更多</i></span></a>
                 </div>

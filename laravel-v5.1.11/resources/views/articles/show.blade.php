@@ -16,7 +16,7 @@
                 <div class="entry custome">
                     {{ $article->content }}
                 </div>
-                <a class="more-link-custom" href="/articles/{{ $article->id }}"><span><i>更多</i></span></a>
+                {{--<a class="more-link-custom" href="/articles/{{ $article->id }}"><span><i>更多</i></span></a>--}}
             </div>
         </div>
     </article>

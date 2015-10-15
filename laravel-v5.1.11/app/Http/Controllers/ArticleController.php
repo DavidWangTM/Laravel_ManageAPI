@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -16,7 +17,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
+        $articles = Article::latest()->get();
+
         return view('articles.index',compact('articles'));
     }
 
@@ -37,9 +39,14 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Requests\StoreArticleRequest $request)
     {
-        //
+//        $this->validate($request,['title'=>'required','content'=>'required']); 不继承的写法
+        $input = $request->all();
+        $input['published_at']=Carbon::now();
+        $input['intro'] = mb_substr($request->get('content'),0,64);
+        Article::create($input);
+        return redirect('/articles');
     }
 
     /**
