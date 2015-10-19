@@ -17,8 +17,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::latest()->get();
-
+        $articles = Article::latest()->where('user_id','=',\Auth::user()-> id)->get();
         return view('articles.index',compact('articles'));
     }
 
