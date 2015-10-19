@@ -1,6 +1,8 @@
 @extends('app')
 @section('content')
-    <h1>Articles</h1>
+    <h1>Articles:{{Auth::user() -> name}}</h1>
+    <h2><a href="/articles/create">编辑文章</a></h2>
+    <h2><a href="/auth/logout">退出</a></h2>
     <hr>
 
     @foreach($articles as $article)

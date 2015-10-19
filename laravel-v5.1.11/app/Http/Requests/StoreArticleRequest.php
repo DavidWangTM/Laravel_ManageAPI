@@ -23,10 +23,11 @@ class StoreArticleRequest extends Request
      */
     public function rules()
     {
-        return [
-            //
+
+        $rules = [
             'title'=>'required',
             'content'=>'required',
         ];
+        return $rules;
     }
 }

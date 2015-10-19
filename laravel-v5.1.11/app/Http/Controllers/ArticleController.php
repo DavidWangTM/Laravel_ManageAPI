@@ -45,6 +45,7 @@ class ArticleController extends Controller
         $input = $request->all();
         $input['published_at']=Carbon::now();
         $input['intro'] = mb_substr($request->get('content'),0,64);
+        $input['user_id'] = \Auth::user() -> id;
         Article::create($input);
         return redirect('/articles');
     }
@@ -69,7 +70,8 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $article = Article::findOrFail($id);
+        return view('articles.edit',compact('article'));
     }
 
     /**
@@ -79,9 +81,13 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Requests\StoreArticleRequest $request, $id)
     {
         //
+        $article = Article::findOrFail($id);
+        $input = $request->all();
+        $article -> update($input);
+        return redirect('/articles');
     }
 
     /**
