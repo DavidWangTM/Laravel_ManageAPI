@@ -17,6 +17,8 @@
                     {{ $article->content }}
                 </div>
                 <a class="more-link-custom" href="/articles/{{ $article->id }}/edit"><span><i>编辑</i></span></a>
+
+                <a class="more-link-custom" href="/articles/{{ $article->id }}/destroy"><span><i>删除</i></span></a>
             </div>
         </div>
     </article>

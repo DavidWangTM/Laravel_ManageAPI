@@ -28,7 +28,6 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
         return view('articles.create');
     }
 
@@ -98,5 +97,7 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         //
+        Article::destroy($id);
+        return redirect('/articles');
     }
 }

@@ -15,16 +15,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/articles','ArticleController@index');
-
-Route::get('/articles/create','ArticleController@create');
-
-Route::post('/articles/store','ArticleController@store');
-
-Route::get('/articles/{id}','ArticleController@show');
+//Route::get('/articles','ArticleController@index');
+//
+//Route::get('/articles/create','ArticleController@create');
+//
+//Route::post('/articles/store','ArticleController@store');
+//
+//Route::get('/articles/{id}','ArticleController@show');
 
 //通过php artisan route:list 生成
-//Route::resource('articles','ArticleController');
+Route::resource('articles','ArticleController');
+
+Route::get('/articles/{id}/destroy','ArticleController@destroy');
 
 Route::get('auth/login','Auth\AuthController@getLogin');
 Route::post('auth/login','Auth\AuthController@postLogin');
