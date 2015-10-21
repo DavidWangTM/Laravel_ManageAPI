@@ -36,9 +36,9 @@ Route::group(['prefix' =>'auth','namespace' => 'Auth'],function() {
 });
 
 //namespace 来控制命名空间
-Route::group(['prefix' =>'articles','middleware' => ['auth']],function(){
+Route::group(['middleware' => 'auth'],function(){
 //通过php artisan route:list 生成
-    Route::resource('/','ArticleController');
+    Route::resource('/articles','ArticleController');
     Route::get('/articles/{id}/destroy','ArticleController@destroy');
 });
 

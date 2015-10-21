@@ -17,7 +17,7 @@
     </div>
 
     {!! Form::submit('登陆',['class'=> 'btn btn-success form-control']) !!}
-
+    <a class="btn btn-success form-control" href="/auth/register" > 注册 </a>
     {!! Form::close() !!}
 
     </div>
