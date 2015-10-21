@@ -23,15 +23,22 @@ Route::get('/', function () {
 //
 //Route::get('/articles/{id}','ArticleController@show');
 
+Route::group(['prefix' =>'auth','namespace' => 'Auth'],function() {
+
+    Route::get('login', 'AuthController@getLogin');
+    Route::post('login', 'AuthController@postLogin');
+
+    Route::get('register', 'AuthController@getRegister');
+    Route::post('register', 'AuthController@postRegister');
+
+    Route: get('logout', 'AuthController@getLogout');
+
+});
+
+//namespace 来控制命名空间
+Route::group(['prefix' =>'articles','middleware' => ['auth']],function(){
 //通过php artisan route:list 生成
-Route::resource('articles','ArticleController');
+    Route::resource('/','ArticleController');
+    Route::get('/articles/{id}/destroy','ArticleController@destroy');
+});
 
-Route::get('/articles/{id}/destroy','ArticleController@destroy');
-
-Route::get('auth/login','Auth\AuthController@getLogin');
-Route::post('auth/login','Auth\AuthController@postLogin');
-
-Route::get('auth/register','Auth\AuthController@getRegister');
-Route::post('auth/register','Auth\AuthController@postRegister');
-
-Route:get('auth/logout','Auth\AuthController@getLogout');

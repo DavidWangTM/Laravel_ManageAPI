@@ -3,8 +3,6 @@
     <head>
         <title>Laravel</title>
 
-        
-
         <style>
             html, body {
                 height: 100%;
@@ -39,7 +37,9 @@
         <div class="container">
             <div class="content">
                 <div class="title">Laravel 5</div>
+                <h2><a href="/articles">点我进入Articles_demo</a></h2>
             </div>
+
         </div>
     </body>
 </html>
