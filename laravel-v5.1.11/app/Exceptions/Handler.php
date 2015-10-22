@@ -48,4 +48,22 @@ class Handler extends ExceptionHandler
 
         return parent::render($request, $e);
     }
+
+    /**
+     *
+     * @param \Exception $e
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    protected function convertExceptionToResponse(Exception $e)
+    {
+        $debug = config('app.debug', false);
+
+        if ($debug) {
+            // 当 debug 为 true 时，返回默认的报错页面
+            return (new SymfonyDisplayer($debug))->createResponse($e);
+        }
+
+        return response()->view('errors.default', ['expection' => $e], 500);
+    }
 }

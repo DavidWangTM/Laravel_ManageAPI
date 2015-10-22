@@ -42,3 +42,7 @@ Route::group(['middleware' => 'auth'],function(){
     Route::get('/articles/{id}/destroy','ArticleController@destroy');
 });
 
+
+Route::get('/test','TestUpDateController@index');
+Route::post('/test','TestUpDateController@store');
+
