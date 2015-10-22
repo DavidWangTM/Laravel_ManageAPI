@@ -46,3 +46,6 @@ Route::group(['middleware' => 'auth'],function(){
 Route::get('/test','TestUpDateController@index');
 Route::post('/test','TestUpDateController@store');
 
+Route::get('/test_ajax','TestUpDateController@index_ajax');
+Route::post('/test_ajax','TestUpDateController@store_ajax');
+

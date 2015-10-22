@@ -22,6 +22,12 @@ class TestUpDateController extends Controller
 //        return view('upimage',compact('token'));
     }
 
+
+    public function index_ajax(){
+
+        return view('ajaxup');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -51,6 +57,30 @@ class TestUpDateController extends Controller
                 dd($path);
             } else {
                 dd('上传失败');
+            }
+        }
+    }
+
+    public function store_ajax(Request $request)
+    {
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $realPath = $file -> getRealPath();
+            $disk = \Storage::disk('qiniu');
+            $clientName = $file->getClientOriginalName();
+            $type = $disk->put($clientName, file_get_contents($realPath));
+            if ($type) {
+                $path = $disk->getDriver()->privateDownloadUrl($clientName);
+                $back = \Response::json([
+                        'success' => true,
+                        'avatar' => asset($path),]);
+                return $back;
+            } else {
+                $back = \Response::json([
+                    'success' => false,
+                    'errors' => asset('上传失败'),]);
+                return $back;
             }
         }
     }
