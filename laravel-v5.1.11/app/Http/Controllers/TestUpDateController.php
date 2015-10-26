@@ -63,7 +63,6 @@ class TestUpDateController extends Controller
 
     public function store_ajax(Request $request)
     {
-
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $realPath = $file -> getRealPath();

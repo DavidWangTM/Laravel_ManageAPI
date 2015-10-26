@@ -49,3 +49,8 @@ Route::post('/test','TestUpDateController@store');
 Route::get('/test_ajax','TestUpDateController@index_ajax');
 Route::post('/test_ajax','TestUpDateController@store_ajax');
 
+// API  Route
+$api = app('api.router');
+$api->version('v1', function ($api) {
+    $api->get('users', 'App\Http\Controllers\Api\V1\UserController@index');
+});
